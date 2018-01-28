@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+	a{
+		text-decoration:none;
+		color: black;
+	}
+	/*body{text-align: center}*/
+	.ss_1{	
+		float: left;
+		margin-left: 550px;
+		text-align: center;
+	}
+	.ss_2{
+		float: right;
+		text-align: right;
+	}
+</style>  
+</head>
+
+
+<div>
+	<div class="ss_1"> 
+	<a href="#" > 课程 </a>
+	<a href="/problem/problem_show"> 题库 </a>
+	<a href="#"> 比赛 </a>
+	</div>
+    {% if  username  != None %}
+    <div class="ss_2">
+	<a href="#"> {{ username }} </a>
+	<a>|</a>
+	<a href="/login/login_out/"> 注销 </a>
+	</div>
+    {% else %}
+	<div class="ss_2">
+	<a href="/login/login/"> 登录 </a>
+	<a>|</a>
+	<a href="/login/register"> 注册 </a>
+    {% endif %}
+	</div>
+</div>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>problem_show</title>
+    <style>
+        a{
+		text-decoration:none;
+		color: black;
+	}
+    </style>
+
+</head>
+
+<body>
+    <a> This is problem_show_page</a><br/>
+    {% for i in problem_name %}
+        <a name="problem_name" href= "/problem/problem_show_one?problem_name={{ i.0 }}" >{{ i.0 }} </a>&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp;
+    {% endfor %}
+</body>
+</html>

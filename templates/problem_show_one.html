@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a> This is problem_show_one-page</a><br/>
+    <p>name : {{ problem_name }}</p>
+    <p>describe: {{ problem_describe }}</p>
+    <form action="/problem/problem_isRight" method="GET">
+        flag:<input type="text" name="flag" value="">&nbsp;&nbsp;
+        <input type="hidden" name="problem_name" value="{{ problem_name }}">
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>
