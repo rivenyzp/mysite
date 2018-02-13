@@ -13,6 +13,7 @@ urlpatterns = patterns('',
                        url(r'^login_to/$',views.login_to,name='login_to'),
                        url(r'^index/$',views.index,name='index'),
                        url(r'^login_out/$',views.login_out,name='login_out'),
+                       url(r'^home/$',views.home,name='home'),
                        #url(r'^index/$', views.index, name='index'),
                        #url(r'^logout/$', views.logout, name='logout'),
                        )

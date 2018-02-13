@@ -64,3 +64,6 @@ def login_out(req):
         del req.session['is_login']
         del req.session['username']
     return index(req)
+
+def home(req):
+    return render(req,'home.html')
