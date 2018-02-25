@@ -44,5 +44,3 @@ def problem_show_one(req):
                       )
     else:
         return  render(req,'login.html')
-
-
