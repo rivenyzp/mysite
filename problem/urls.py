@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^problem_show_one/',views.problem_show_one,name='problem_show_one'),
     url(r'^problem_isRight/',views.problem_isRight,name='problem_isRight'),
     # ([A-Za-z0-9]+)$/$ //匹配数字加英文的正则表达式
+
+    url(r'^listing/',views.listing,name='listing'),
 )
