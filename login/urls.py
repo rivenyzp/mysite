@@ -6,7 +6,7 @@ from django.conf.urls import patterns, url
 from login import views
 
 urlpatterns = patterns('',
-                       #url(r'^$', views.login, name='login'),
+                       # url(r'^$', views.login, name='login'),
                        url(r'^login/$', views.login, name='login'),
                        url(r'^register/$', views.is_register, name='register'),
                        url(r'^register_to/$', views.register, name='register_to'),

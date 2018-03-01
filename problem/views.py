@@ -1,8 +1,9 @@
 from django.shortcuts import render,render_to_response,get_object_or_404
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template import RequestContext
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from problem.models import problem
+import json
 
 # Create your views here.
 def problem_show(req):
@@ -47,9 +48,15 @@ def problem_show_one(req):
         return  render(req,'login.html')
 
 
-def listing(request):
-    problem_list = problem.objects.all()  # 获取所有contacts,假设在models.py中已定义了Contacts模型
-    paginator = Paginator(problem_list, 3) # 每页25条
+# filter_type 过滤的类型
+def listing(request,filter_type='A'):
+    if filter_type!='A':
+        problem_list =problem.objects.filter(problem_type=filter_type)
+    else:
+        problem_list = problem.objects.all()  # 获取所有contacts,假设在models.py中已定义了Contacts模型
+
+
+    paginator = Paginator(problem_list, 5) # 每页5条信息
 
     page = request.GET.get('page',1)
     try:
@@ -62,3 +69,15 @@ def listing(request):
         problems = paginator.page(paginator.num_pages)
 
     return render(request, 'problem/problem.html', {'problems': problems})
+
+# 对题目进行后台校验，查看正确性。
+def problem_check(req):
+    answer =req.GET.get('flag_answer')
+    pid =req.GET.get('id')
+    query_object=problem.objects.get(id__exact=pid)
+    # 1对 0错
+    if answer ==query_object.problem_answer:
+        dic={"key":1}
+    else:
+        dic={"key":0}
+    return HttpResponse(json.dumps(dic),content_type='application/json')
